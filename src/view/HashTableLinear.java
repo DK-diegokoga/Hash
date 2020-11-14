@@ -1,10 +1,10 @@
-package hash;
+package view;
 
 import hash.HashLinear;
 import java.util.Scanner;
 
 public class HashTableLinear {
-	public static void main(String[] args) {
+	public void HashTable() {
 		HashLinear tab = new HashLinear(7);
 		Scanner le = new Scanner(System.in);
 		double item;
@@ -19,7 +19,7 @@ public class HashTableLinear {
 			System.out.print("\n\nInserindo elemento " + (i + 1));
 			System.out.print(" - Forneca valor real: ");
 			item = le.nextDouble();
-			tab.insere(item);// é o vetor da estrutura da hash
+			tab.insere(item);// ï¿½ o vetor da estrutura da hash
 		}
 
 		System.out.print("\n\nBuscando campo\n>>> Forneca o item: ");

@@ -1,5 +1,6 @@
 package hash;
 
+import javax.swing.JOptionPane;
 
 public class HashLinear {
 	  private Hash[] tab;//vetor tab
@@ -14,34 +15,36 @@ public class HashLinear {
 	  
 	  private int funcaohash(double chave) {
 	        int v = (int) chave;//convertendo o valor para inteiro
-		return ( Math.abs(v) % TAM_MAX );//pega o resto da divisão de um valor pelo tamanho do vetor
-										//se o valor não for igual a zero ele retorna um valor entre 1 e o tamanho maximo do vetor
-										// é aqui que pode ocorrer a colisão
+	        int Hee = ( Math.abs(v) % TAM_MAX );
+	        JOptionPane.showMessageDialog(null,"" + Hee);
+		return Hee;//pega o resto da divisï¿½o de um valor pelo tamanho do vetor
+										//se o valor nï¿½o for igual a zero ele retorna um valor entre 1 e o tamanho maximo do vetor
+										// ï¿½ aqui que pode ocorrer a colisï¿½o
 	  }
 	  
 	  public void insere(double item) {
 	    
-	    if (cheia()) { // Se tabela cheia, imprime aviso e sai da função
+	    if (cheia()) { // Se tabela cheia, imprime aviso e sai da funï¿½ï¿½o
 	       System.out.println("\n->ATENCAO Tabela cheia");
-	       return; // saida imediata da função, nao executa os comandos abaixo
+	       return; // saida imediata da funï¿½ï¿½o, nao executa os comandos abaixo
 	    }
 		
-	    int pos = funcaohash(item); // CALCULA POSIÇAO
+	    int pos = funcaohash(item); // CALCULA POSIï¿½AO
 		
 	    // INICIO ROTINA TRATAMENTO DE COLISAO
 	    if (tab[pos].ocupado==true) { // se ocorreu colisao
 
 		if (item == tab[pos].item) { // se a chave ja existe
 		   System.out.println("\n->ATENCAO Esse item ja foi cadastrado");
-		   return; // saida imediata da função
+		   return; // saida imediata da funï¿½ï¿½o
 		}
 
 		System.out.println("-> Ocorreu uma colisao na posicao " + pos);
 		while (pos < TAM_MAX) {
 		    if (pos == TAM_MAX-1 ) pos = -1; // volta para o inicio da tabela
 		    pos++; // incremento mais um no indice
-		    if ( !tab[pos].ocupado ) // se a posição estiver livre
-	               break; // sai do loop com o indice na posicao correta (pos sem colisão)
+		    if ( !tab[pos].ocupado ) // se a posiï¿½ï¿½o estiver livre
+	               break; // sai do loop com o indice na posicao correta (pos sem colisï¿½o)
 		}
 	    }
 	    // FIM ROTINA TRATAMENTO DE COLISAO
@@ -54,16 +57,16 @@ public class HashLinear {
 	  public int busca(double chave) { // Recuperando um elemento
 	     int pos = funcaohash(chave);
 	     if (tab[pos].ocupado==true) {
-	        if (tab[pos].item == chave) // Se o campo esta ocupado e o nome e chave são iguais
-		   return pos; // saida imediata da função
+	        if (tab[pos].item == chave) // Se o campo esta ocupado e o nome e chave sï¿½o iguais
+		   return pos; // saida imediata da funï¿½ï¿½o
 
 	           // INICIO ROTINA TRATAMENTO DE COLISAO (se o item e chave nao sao iguais)
 	           int iniciobusca = pos;
-		   while (pos < TAM_MAX) { // percorre proximas posições do vetor
+		   while (pos < TAM_MAX) { // percorre proximas posiï¿½ï¿½es do vetor
 	             if (pos == TAM_MAX-1) pos=-1; // volta para o inicio da tabela
 	             pos++; // incremento mais um no indice
 		     if (tab[pos].ocupado && tab[pos].item == chave) // se o campo esta ocupado e o item foi encontrado
-			 return pos; // saida imediata da função
+			 return pos; // saida imediata da funï¿½ï¿½o
 		    if (pos == iniciobusca) return -1; // se percorreu tudo e nao encontrou
 	           }
 		  //FIM ROTINA TRATAMENTO DE COLISAO
